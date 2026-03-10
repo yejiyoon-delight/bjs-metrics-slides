@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BJ’s × Delight AI — Success Metrics & Next Steps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:    #0D0D0D;
+    --bg:      #FAFAF7;
+    --bg2:     #F0EFEB;
+    --accent:  #1B4D3E;
+    --accent2: #2A7D62;
+    --pop:     #E8FF59;
+    --coral:   #D94F3B;
+    --text:    #1A1A1A;
+    --text2:   #444;
+    --text3:   #777;
+    --white:   #FFFFFF;
+    --font-d:  'Lora', Georgia, serif;
+    --font-b:  'Inter', sans-serif;
+  }
+  *, ::before, ::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { height: 100%; scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+  body { font-family: var(--font-b); background: var(--dark); }
+
+  .slide {
+    width: 100vw; height: 100vh; min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(48px, 8vw, 96px) clamp(48px, 8vw, 100px);
+    position: relative; overflow: hidden;
+  }
+  .s-dark   { background: var(--dark);   color: var(--white); }
+  .s-light  { background: var(--bg);     color: var(--text);  }
+  .s-accent { background: var(--accent); color: var(--white); }
+
+  /* labels */
+  .section-label {
+    font-family: var(--font-b);
+    font-size: clamp(0.62rem, 0.78vw, 0.76rem);
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;
+    margin-bottom: 18px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before { content: ''; display: block; width: 28px; height: 2px; flex-shrink: 0; }
+  .s-dark  .section-label          { color: var(--pop); }
+  .s-dark  .section-label::before  { background: var(--pop); }
+  .s-light .section-label          { color: var(--accent); }
+  .s-light .section-label::before  { background: var(--accent); }
+  .s-accent .section-label         { color: var(--pop); }
+  .s-accent .section-label::before { background: var(--pop); }
+
+  .slide-h2 {
+    font-family: var(--font-d);
+    font-size: clamp(1.9rem, 3.4vw, 3rem);
+    font-weight: 700; line-height: 1.12; letter-spacing: -0.01em;
+  }
+  .slide-title {
+    font-family: var(--font-d);
+    font-size: clamp(2.8rem, 5.5vw, 5rem);
+    font-weight: 700; line-height: 1.08; letter-spacing: -0.02em;
+  }
+
+  /* section break */
+  .section-break { align-items: center; justify-content: center; text-align: center; }
+  .section-number {
+    font-family: var(--font-d); font-size: clamp(6rem, 14vw, 12rem);
+    font-weight: 700; line-height: 1; letter-spacing: -0.05em;
+    color: var(--pop); opacity: 0.12;
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -55%); pointer-events: none;
+  }
+  .section-break-content { position: relative; z-index: 2; }
+  .section-break .section-label { justify-content: center; }
+
+  /* logo */
+  .logo-mark {
+    position: absolute; bottom: 28px; left: clamp(36px, 7vw, 100px);
+    font-size: 0.76rem; font-weight: 700; letter-spacing: 0.04em;
+    opacity: 0.28;
+  }
+  .s-dark  .logo-mark { color: var(--white); }
+  .s-light .logo-mark { color: var(--text); }
+  .s-accent .logo-mark { color: var(--white); }
+
+  /* nav */
+  #navDots { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 6px; z-index: 100; }
+  .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; transition: all 0.25s; padding: 0; }
+  .nav-dot.active { background: var(--pop); transform: scale(1.4); }
+  .slide-hint { position: fixed; bottom: 20px; right: 24px; font-size: 0.7rem; color: rgba(255,255,255,0.28); z-index: 100; }
+
+  /* SLIDE 2: METRICS STRUCTURE */
+  .metrics-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(16px, 2.5vw, 28px);
+    margin-top: clamp(20px, 3vw, 32px);
+    flex: 1;
+  }
+
+  .col-label {
+    font-size: clamp(0.6rem, 0.72vw, 0.7rem);
+    font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em;
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .col-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+  .col-baseline .col-label            { color: rgba(255,255,255,0.45); }
+  .col-baseline .col-label::before    { background: rgba(255,255,255,0.35); }
+  .col-primary .col-label             { color: var(--pop); }
+  .col-primary .col-label::before     { background: var(--pop); }
+
+  .metric-block {
+    padding: clamp(14px, 1.8vw, 20px) clamp(16px, 2vw, 22px);
+    border-radius: 14px;
+    margin-bottom: 8px;
+  }
+  .metric-block:last-child { margin-bottom: 0; }
+
+  .col-baseline .metric-block {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .col-primary .metric-block {
+    background: rgba(232,255,89,0.07);
+    border: 1px solid rgba(232,255,89,0.18);
+  }
+
+  .mb-name {
+    font-size: clamp(0.85rem, 1.1vw, 1rem);
+    font-weight: 700; color: var(--white);
+    margin-bottom: 4px; line-height: 1.25;
+  }
+  .col-primary .mb-name { color: var(--pop); }
+
+  .mb-desc {
+    font-size: clamp(0.72rem, 0.88vw, 0.82rem);
+    color: rgba(255,255,255,0.42); line-height: 1.45;
+  }
+
+  .mb-stat {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 8px; padding: 3px 10px;
+    border-radius: 5px; font-size: 0.68rem; font-weight: 800;
+  }
+  .col-baseline .mb-stat { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+  .col-primary  .mb-stat { background: rgba(232,255,89,0.15);  color: var(--pop); }
+
+  .signaling-band {
+    margin-top: clamp(16px, 2.5vw, 24px);
+    padding: clamp(14px, 1.8vw, 18px) clamp(16px, 2vw, 22px);
+    border-radius: 14px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .sig-label {
+    font-size: clamp(0.58rem, 0.7vw, 0.68rem);
+    font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.28); margin-bottom: 10px;
+  }
+
+  .sig-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .sig-pill {
+    font-size: clamp(0.66rem, 0.78vw, 0.74rem);
+    font-weight: 500; color: rgba(255,255,255,0.38);
+    background: rgba(255,255,255,0.05);
+    padding: 4px 12px; border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* SLIDE 3: TIMELINE */
+  .timeline-cols {
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    gap: clamp(20px, 3vw, 40px); align-items: start;
+    margin-top: clamp(20px, 3vw, 36px);
+  }
+
+  .tl-arrow {
+    display: flex; align-items: flex-start; padding-top: 36px;
+    color: rgba(255,255,255,0.2); font-size: 1.5rem;
+  }
+
+  .tl-col {}
+
+  .tl-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: clamp(0.6rem, 0.72vw, 0.7rem);
+    font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em;
+    margin-bottom: 14px;
+  }
+  .tl-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+  .tl-now .tl-tag  { color: rgba(255,255,255,0.4); }
+  .tl-now .tl-tag::before  { background: rgba(255,255,255,0.3); }
+  .tl-ebc .tl-tag  { color: var(--pop); }
+  .tl-ebc .tl-tag::before  { background: var(--pop); }
+
+  .tl-title {
+    font-family: var(--font-d);
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+    font-weight: 700; color: var(--white); line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .tl-ebc .tl-title { color: var(--pop); }
+
+  .tl-sub {
+    font-size: clamp(0.7rem, 0.85vw, 0.8rem);
+    color: rgba(255,255,255,0.35); margin-bottom: 20px;
+  }
+
+  .tl-items { display: flex; flex-direction: column; gap: 8px; }
+
+  .tl-item {
+    padding: clamp(12px, 1.5vw, 16px) clamp(14px, 1.8vw, 18px);
+    border-radius: 12px;
+    display: flex; flex-direction: column; gap: 3px;
+  }
+
+  .tl-now .tl-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .tl-ebc .tl-item {
+    background: rgba(232,255,89,0.06);
+    border: 1px solid rgba(232,255,89,0.16);
+  }
+
+  .tl-item-name {
+    font-size: clamp(0.82rem, 1vw, 0.92rem);
+    font-weight: 700; line-height: 1.25;
+  }
+  .tl-now .tl-item-name { color: rgba(255,255,255,0.85); }
+  .tl-ebc .tl-item-name { color: var(--pop); }
+
+  .tl-item-desc {
+    font-size: clamp(0.68rem, 0.82vw, 0.76rem);
+    color: rgba(255,255,255,0.35); line-height: 1.4;
+  }
+
+  .tl-milestone {
+    margin-top: 18px; padding: 10px 16px; border-radius: 10px;
+    font-size: clamp(0.7rem, 0.84vw, 0.78rem); font-weight: 700;
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(232,255,89,0.1); color: var(--pop);
+    border: 1px solid rgba(232,255,89,0.2);
+  }
+
+  /* SLIDE 4: NEXT STEPS (light) */
+  .ns-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(16px, 2.5vw, 24px);
+    margin-top: clamp(20px, 3vw, 32px);
+  }
+
+  .ns-card {
+    background: var(--bg2); border-radius: 16px;
+    padding: clamp(20px, 2.5vw, 28px);
+  }
+
+  .ns-eyebrow {
+    font-size: 0.65rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--accent); margin-bottom: 8px;
+  }
+  .ns-title {
+    font-family: var(--font-d);
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 700; color: var(--text); margin-bottom: 14px; line-height: 1.25;
+  }
+  .ns-items { display: flex; flex-direction: column; gap: 8px; }
+  .ns-item {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: clamp(0.78rem, 1vw, 0.88rem);
+    color: var(--text2); line-height: 1.45;
+  }
+  .ns-item::before { content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  .ns-card.highlight {
+    background: var(--accent); border-radius: 16px;
+    padding: clamp(20px, 2.5vw, 28px);
+    grid-column: span 2;
+    display: flex; align-items: center; gap: 32px;
+  }
+
+  .ns-card.highlight .ns-eyebrow { color: var(--pop); }
+  .ns-card.highlight .ns-title   { color: var(--white); margin-bottom: 0; }
+  .ns-highlight-quote {
+    font-family: var(--font-d);
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+    font-weight: 600; color: var(--white);
+    line-height: 1.45; flex: 1;
+  }
+  .ns-highlight-quote em { color: var(--pop); font-style: normal; }
+</style>
+</head>
+
+<body>
+
+<div id="navDots"></div>
+<div class="slide-hint">↑ ↓ to navigate</div>
+
+<!-- SLIDE 1: SECTION BREAK -->
+<div class="slide s-accent section-break">
+  <div class="section-number">05</div>
+  <div class="section-break-content">
+    <div class="section-label">Section 05</div>
+    <h1 class="slide-title">Success Metrics<br>&amp; Next Steps</h1>
+  </div>
+  <span class="logo-mark">✦ delight.ai</span>
+</div>
+
+<!-- SLIDE 2: THE SCORECARD -->
+<div class="slide s-dark">
+  <div class="section-label">Scorecard</div>
+  <h2 class="slide-h2">Three metrics to move.<br>Everything else is a signal.</h2>
+
+  <div class="metrics-layout">
+
+    <div class="col-baseline">
+      <div class="col-label">Establish now — baseline</div>
+
+      <div class="metric-block">
+        <div class="mb-name">Monthly Active Rate</div>
+        <div class="mb-desc">% of members who start a conversation with Bev. The adoption floor we’re working from.</div>
+        <span class="mb-stat">Today: 0.037%</span>
+      </div>
+
+      <div class="metric-block">
+        <div class="mb-name">Revenue Per Engaged Member</div>
+        <div class="mb-desc">Revenue per visit for chat users vs. non-chat baseline. We have this number — formalize it.</div>
+        <span class="mb-stat">$17.67 vs. $4.91 baseline</span>
+      </div>
+
+      <div class="metric-block">
+        <div class="mb-name">Containment Rate</div>
+        <div class="mb-desc">% of member issues Steward resolves without human handoff. Set the line before we move it.</div>
+        <span class="mb-stat">Industry avg: 50% handoff</span>
+      </div>
+    </div>
+
+    <div class="col-primary">
+      <div class="col-label">Move by EBC — primary</div>
+
+      <div class="metric-block">
+        <div class="mb-name">Conversion Rate Lift</div>
+        <div class="mb-desc">Does 3.8x hold — and grow — as FYC drives adoption up from 0.037%? The headline metric.</div>
+        <span class="mb-stat">Today: 3.8x</span>
+      </div>
+
+      <div class="metric-block">
+        <div class="mb-name">FYC Engagement Rate</div>
+        <div class="mb-desc">% of proactive messages (coupons, replenishment, seasonal) that get a response. The proof that Bev reaching out first works.</div>
+      </div>
+
+      <div class="metric-block">
+        <div class="mb-name">Renewal Rate Delta</div>
+        <div class="mb-desc">Do Bev-engaged members renew at a higher rate? The ultimate BJ’s-specific signal — this is a membership business.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="signaling-band">
+    <div class="sig-label">Signaling metrics — watch, don’t optimize for yet</div>
+    <div class="sig-pills">
+      <span class="sig-pill">Coupon redemption via AI</span>
+      <span class="sig-pill">Cart abandonment recovery</span>
+      <span class="sig-pill">CSAT: AI vs. human</span>
+      <span class="sig-pill">Steward L1 accuracy</span>
+      <span class="sig-pill">Churn rescue rate</span>
+      <span class="sig-pill">Club+ upgrade rate</span>
+      <span class="sig-pill">NPS delta</span>
+      <span class="sig-pill">Member LTV</span>
+      <span class="sig-pill">Category expansion</span>
+    </div>
+  </div>
+
+  <span class="logo-mark">✦ delight.ai</span>
+</div>
+
+<!-- SLIDE 3: TIMELINE -->
+<div class="slide s-dark">
+  <div class="section-label">Measurement Timeline</div>
+  <h2 class="slide-h2">Now → EBC</h2>
+
+  <div class="timeline-cols">
+
+    <div class="tl-col tl-now">
+      <div class="tl-tag">Now — Establish Baseline</div>
+      <div class="tl-title">What we’re<br>formalizing today</div>
+      <div class="tl-sub">Data we already have. Make it official.</div>
+      <div class="tl-items">
+        <div class="tl-item">
+          <div class="tl-item-name">Monthly Active Rate</div>
+          <div class="tl-item-desc">Lock in 0.037% as the starting line so every future number has context</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-item-name">Revenue Per Engaged Member</div>
+          <div class="tl-item-desc">Formalize $17.67 vs. $4.91 as the official RPEM baseline</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-item-name">Containment Rate</div>
+          <div class="tl-item-desc">Benchmark where Steward starts — before we track the gap closing</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-arrow">→</div>
+
+    <div class="tl-col tl-ebc">
+      <div class="tl-tag">May 2026 — EBC &amp; Spark</div>
+      <div class="tl-title">What we’re<br>showing movement on</div>
+      <div class="tl-sub">Three numbers. Clear story.</div>
+      <div class="tl-items">
+        <div class="tl-item">
+          <div class="tl-item-name">Conversion Rate Lift</div>
+          <div class="tl-item-desc">3.8x held — and grew — as adoption scaled past 0.037%</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-item-name">FYC Engagement Rate</div>
+          <div class="tl-item-desc">X% of proactive messages drove a response — Bev reaches out, members respond</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-item-name">Renewal Rate Delta</div>
+          <div class="tl-item-desc">Bev-engaged members renew at Xx the rate of non-engaged — the membership ROI story</div>
+        </div>
+      </div>
+      <div class="tl-milestone">📅 Executive Briefing Center &amp; Spark · May 2026</div>
+    </div>
+
+  </div>
+  <span class="logo-mark">✦ delight.ai</span>
+</div>
+
+<!-- SLIDE 4: NEXT STEPS -->
+<div class="slide s-light">
+  <div class="section-label">Next Steps</div>
+  <h2 class="slide-h2">What we align on today</h2>
+
+  <div class="ns-grid">
+
+    <div class="ns-card">
+      <div class="ns-eyebrow">Immediate</div>
+      <div class="ns-title">Establish the baselines</div>
+      <div class="ns-items">
+        <div class="ns-item">Pull and formalize RPEM, active rate, and containment rate from existing data</div>
+        <div class="ns-item">Agree on the definition of “engaged member” — single session? 2+ interactions?</div>
+        <div class="ns-item">Identify who owns each metric on the BJ’s side</div>
+      </div>
+    </div>
+
+    <div class="ns-card">
+      <div class="ns-eyebrow">Before EBC</div>
+      <div class="ns-title">Stand up the measurement loop</div>
+      <div class="ns-items">
+        <div class="ns-item">Shared dashboard — monthly cadence on the 3 primary metrics</div>
+        <div class="ns-item">FYC instrumentation: track proactive send → open → response</div>
+        <div class="ns-item">Renewal cohort tagging: flag Bev-engaged members for renewal comparison</div>
+      </div>
+    </div>
+
+    <div class="ns-card highlight">
+      <div>
+        <div class="ns-eyebrow">The story we’re building toward</div>
+      </div>
+      <div class="ns-highlight-quote">
+        We’ve already proven the lift. By EBC, we’ll prove it <em>scales</em> — and that an AI your members actually talk to is an AI that makes them <em>renew</em>.
+      </div>
+    </div>
+
+  </div>
+  <span class="logo-mark">✦ delight.ai</span>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const navDots = document.getElementById('navDots');
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth' }));
+    navDots.appendChild(dot);
+  });
+  const dots = navDots.querySelectorAll('.nav-dot');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const i = Array.from(slides).indexOf(e.target);
+        dots.forEach((d, j) => d.classList.toggle('active', i === j));
+      }
+    });
+  }, { threshold: 0.5 });
+  slides.forEach(s => observer.observe(s));
+  document.addEventListener('keydown', e => {
+    let cur = 0;
+    slides.forEach((s, i) => { if (s.getBoundingClientRect().top < 10) cur = i; });
+    if (['ArrowDown', 'ArrowRight', ' '].includes(e.key)) { e.preventDefault(); slides[Math.min(cur + 1, slides.length - 1)].scrollIntoView({ behavior: 'smooth' }); }
+    else if (['ArrowUp', 'ArrowLeft'].includes(e.key)) { e.preventDefault(); slides[Math.max(cur - 1, 0)].scrollIntoView({ behavior: 'smooth' }); }
+  });
+</script>
+</body>
+</html>
+
