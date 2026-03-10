@@ -37,7 +37,6 @@
   .s-light  { background: var(--bg);     color: var(--text);  }
   .s-accent { background: var(--accent); color: var(--white); }
 
-  /* labels */
   .section-label {
     font-family: var(--font-b);
     font-size: clamp(0.62rem, 0.78vw, 0.76rem);
@@ -64,7 +63,6 @@
     font-weight: 700; line-height: 1.08; letter-spacing: -0.02em;
   }
 
-  /* section break */
   .section-break { align-items: center; justify-content: center; text-align: center; }
   .section-number {
     font-family: var(--font-d); font-size: clamp(6rem, 14vw, 12rem);
@@ -76,7 +74,6 @@
   .section-break-content { position: relative; z-index: 2; }
   .section-break .section-label { justify-content: center; }
 
-  /* logo */
   .logo-mark {
     position: absolute; bottom: 28px; left: clamp(36px, 7vw, 100px);
     font-size: 0.76rem; font-weight: 700; letter-spacing: 0.04em;
@@ -86,13 +83,11 @@
   .s-light .logo-mark { color: var(--text); }
   .s-accent .logo-mark { color: var(--white); }
 
-  /* nav */
   #navDots { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 6px; z-index: 100; }
   .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; transition: all 0.25s; padding: 0; }
   .nav-dot.active { background: var(--pop); transform: scale(1.4); }
   .slide-hint { position: fixed; bottom: 20px; right: 24px; font-size: 0.7rem; color: rgba(255,255,255,0.28); z-index: 100; }
 
-  /* SLIDE 2: METRICS STRUCTURE */
   .metrics-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -174,7 +169,6 @@
     border: 1px solid rgba(255,255,255,0.06);
   }
 
-  /* SLIDE 3: TIMELINE */
   .timeline-cols {
     display: grid; grid-template-columns: 1fr auto 1fr;
     gap: clamp(20px, 3vw, 40px); align-items: start;
@@ -252,7 +246,6 @@
     border: 1px solid rgba(232,255,89,0.2);
   }
 
-  /* SLIDE 4: NEXT STEPS (light) */
   .ns-grid {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: clamp(16px, 2.5vw, 24px);
@@ -306,7 +299,6 @@
 <div id="navDots"></div>
 <div class="slide-hint">↑ ↓ to navigate</div>
 
-<!-- SLIDE 1: SECTION BREAK -->
 <div class="slide s-accent section-break">
   <div class="section-number">05</div>
   <div class="section-break-content">
@@ -316,7 +308,6 @@
   <span class="logo-mark">✦ delight.ai</span>
 </div>
 
-<!-- SLIDE 2: THE SCORECARD -->
 <div class="slide s-dark">
   <div class="section-label">Scorecard</div>
   <h2 class="slide-h2">Three metrics to move.<br>Everything else is a signal.</h2>
@@ -355,8 +346,8 @@
       </div>
 
       <div class="metric-block">
-        <div class="mb-name">FYC Engagement Rate</div>
-        <div class="mb-desc">% of proactive messages (coupons, replenishment, seasonal) that get a response. The proof that Bev reaching out first works.</div>
+        <div class="mb-name">FYC Coupon Attach Rate</div>
+        <div class="mb-desc">% of cart-triggered welcome sessions where Bev surfaces a matched coupon and the member applies it. Phase 1 proof: right offer, right moment, first touch converts.</div>
       </div>
 
       <div class="metric-block">
@@ -385,7 +376,6 @@
   <span class="logo-mark">✦ delight.ai</span>
 </div>
 
-<!-- SLIDE 3: TIMELINE -->
 <div class="slide s-dark">
   <div class="section-label">Measurement Timeline</div>
   <h2 class="slide-h2">Now → EBC</h2>
@@ -424,8 +414,8 @@
           <div class="tl-item-desc">3.8x held — and grew — as adoption scaled past 0.037%</div>
         </div>
         <div class="tl-item">
-          <div class="tl-item-name">FYC Engagement Rate</div>
-          <div class="tl-item-desc">X% of proactive messages drove a response — Bev reaches out, members respond</div>
+          <div class="tl-item-name">FYC Coupon Attach Rate</div>
+          <div class="tl-item-desc">X% of cart-triggered welcome sessions result in a coupon applied — first evidence that contextual, in-moment delivery converts at scale</div>
         </div>
         <div class="tl-item">
           <div class="tl-item-name">Renewal Rate Delta</div>
@@ -439,7 +429,6 @@
   <span class="logo-mark">✦ delight.ai</span>
 </div>
 
-<!-- SLIDE 4: NEXT STEPS -->
 <div class="slide s-light">
   <div class="section-label">Next Steps</div>
   <h2 class="slide-h2">What we align on today</h2>
@@ -461,7 +450,7 @@
       <div class="ns-title">Stand up the measurement loop</div>
       <div class="ns-items">
         <div class="ns-item">Shared dashboard — monthly cadence on the 3 primary metrics</div>
-        <div class="ns-item">FYC instrumentation: track proactive send → open → response</div>
+        <div class="ns-item">FYC instrumentation: track cart-triggered welcome → coupon surfaced → coupon applied</div>
         <div class="ns-item">Renewal cohort tagging: flag Bev-engaged members for renewal comparison</div>
       </div>
     </div>
